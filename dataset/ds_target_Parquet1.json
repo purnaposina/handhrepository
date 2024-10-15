@@ -8,6 +8,9 @@
 		"parameters": {
 			"path": {
 				"type": "string"
+			},
+			"output_filename": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
