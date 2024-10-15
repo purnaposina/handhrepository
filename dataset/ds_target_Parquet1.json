@@ -5,6 +5,11 @@
 			"referenceName": "newBlobStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"path": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
