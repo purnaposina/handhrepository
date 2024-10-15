@@ -5,6 +5,14 @@
 			"referenceName": "newBlobStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"input": {
+				"type": "string"
+			},
+			"file_name": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
