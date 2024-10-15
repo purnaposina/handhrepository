@@ -66,6 +66,9 @@
 			},
 			"database_name": {
 				"type": "string"
+			},
+			"output_filename": {
+				"type": "string"
 			}
 		},
 		"annotations": []
