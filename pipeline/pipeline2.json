@@ -55,6 +55,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"outputfile_name": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
