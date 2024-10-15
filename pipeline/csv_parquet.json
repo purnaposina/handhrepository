@@ -74,13 +74,25 @@
 				"inputs": [
 					{
 						"referenceName": "ds_source",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"input": {
+								"value": "@pipeline().parameters.input_para",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_target_Parquet1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"path": {
+								"value": "@pipeline().parameters.ouput_para",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
