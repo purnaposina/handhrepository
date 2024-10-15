@@ -1,0 +1,15 @@
+{
+	"name": "MySqlTablesorce_ds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql_Onpremise",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "terms"
+		}
+	}
+}
