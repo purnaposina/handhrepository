@@ -9,7 +9,7 @@
 			"path": {
 				"type": "string"
 			},
-			"output": {
+			"file_name": {
 				"type": "string"
 			}
 		},
@@ -18,7 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "mycon"
+				"container": {
+					"value": "@dataset().path",
+					"type": "Expression"
+				}
 			},
 			"compressionCodec": "snappy"
 		},
