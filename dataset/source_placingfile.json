@@ -2,7 +2,7 @@
 	"name": "source_placingfile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "blobsource",
+			"referenceName": "new blob",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
