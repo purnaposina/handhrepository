@@ -38,6 +38,32 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "first",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "first",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": " last",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " last",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -58,7 +84,11 @@
 				"outputs": [
 					{
 						"referenceName": "ds_target_Parquet1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"path": "targetcon",
+							"output": "parq_csv"
+						}
 					}
 				]
 			}
