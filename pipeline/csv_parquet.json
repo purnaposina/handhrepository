@@ -74,21 +74,13 @@
 				"inputs": [
 					{
 						"referenceName": "ds_source",
-						"type": "DatasetReference",
-						"parameters": {
-							"input": "mycon",
-							"file_name": "sample_csv_files_sample-6"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "ds_target_Parquet1",
-						"type": "DatasetReference",
-						"parameters": {
-							"path": "targetcon",
-							"output": "parq_csv"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
