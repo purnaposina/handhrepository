@@ -12,7 +12,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "pipeline1",
+						"referenceName": "csv_csv basic",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
