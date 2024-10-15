@@ -43,7 +43,13 @@
 				"inputs": [
 					{
 						"referenceName": "MySqlTablesorce_ds",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"database_name": {
+								"value": "@pipeline().globalParameters.database_name",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -56,6 +62,9 @@
 		],
 		"parameters": {
 			"table_name": {
+				"type": "string"
+			},
+			"database_name": {
 				"type": "string"
 			}
 		},
