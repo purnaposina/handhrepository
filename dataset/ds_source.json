@@ -19,7 +19,10 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "sample-csv-files-sample-6.csv",
-				"container": "mycon"
+				"container": {
+					"value": "@dataset().input",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
