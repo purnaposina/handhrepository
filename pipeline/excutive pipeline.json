@@ -11,10 +11,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"pipeline": {
-						"referenceName": "csv_csv basic",
-						"type": "PipelineReference"
-					},
 					"waitOnCompletion": true
 				}
 			}
