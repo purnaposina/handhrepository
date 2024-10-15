@@ -2,17 +2,22 @@
 	"name": "MySql_Onpremise",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"database_name": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "MySql",
 		"typeProperties": {
 			"server": "localhost",
 			"port": 3306,
-			"database": "familyinfodb",
+			"database": "@{linkedService().database_name}",
 			"username": "root",
 			"sslMode": 1,
 			"useSystemTrustStore": 0,
 			"driverVersion": "v2",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0ZDM1ZDkwOC1iZDcyLTQyZTUtYWJiNS04NjgyMWJkOTJjOGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmMDM0N2IwYy1jY2I3LTRhMmMtYjgwNy1lYTY2ZjdhNTJlOGYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeselfhosted",
