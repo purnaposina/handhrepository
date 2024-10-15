@@ -79,6 +79,10 @@
 							"input": {
 								"value": "@pipeline().parameters.input_para",
 								"type": "Expression"
+							},
+							"file_name": {
+								"value": "@pipeline().parameters.inputfile_name",
+								"type": "Expression"
 							}
 						}
 					}
@@ -90,6 +94,10 @@
 						"parameters": {
 							"path": {
 								"value": "@pipeline().parameters.ouput_para",
+								"type": "Expression"
+							},
+							"output_filename": {
+								"value": "@pipeline().parameters.outputfile_name",
 								"type": "Expression"
 							}
 						}
