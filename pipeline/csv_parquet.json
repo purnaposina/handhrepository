@@ -85,6 +85,14 @@
 				]
 			}
 		],
+		"parameters": {
+			"input_para": {
+				"type": "string"
+			},
+			"ouput_para": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
