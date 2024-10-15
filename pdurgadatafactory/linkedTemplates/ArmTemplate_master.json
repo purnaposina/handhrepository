@@ -69,7 +69,7 @@
 		},
 		"MySql_Onpremise_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "familyinfodb"
+			"defaultValue": "@{linkedService().database_name}"
 		},
 		"MySql_Onpremise_properties_typeProperties_username": {
 			"type": "string",
@@ -90,6 +90,10 @@
 		"default_properties_schema_name_value": {
 			"type": "string",
 			"defaultValue": "dbo"
+		},
+		"default_properties_database_name_value": {
+			"type": "string",
+			"defaultValue": "familyinfodb"
 		},
 		"containerUri": {
 			"type": "string",
@@ -135,6 +139,9 @@
 					},
 					"default_properties_schema_name_value": {
 						"value": "[parameters('default_properties_schema_name_value')]"
+					},
+					"default_properties_database_name_value": {
+						"value": "[parameters('default_properties_database_name_value')]"
 					},
 					"AzureBlobStoragesouce_sasUri": {
 						"value": "[parameters('AzureBlobStoragesouce_sasUri')]"

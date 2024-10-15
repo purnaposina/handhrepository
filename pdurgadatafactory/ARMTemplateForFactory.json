@@ -69,7 +69,7 @@
 		},
 		"MySql_Onpremise_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "familyinfodb"
+			"defaultValue": "@{linkedService().database_name}"
 		},
 		"MySql_Onpremise_properties_typeProperties_username": {
 			"type": "string",
@@ -90,6 +90,10 @@
 		"default_properties_schema_name_value": {
 			"type": "string",
 			"defaultValue": "dbo"
+		},
+		"default_properties_database_name_value": {
+			"type": "string",
+			"defaultValue": "familyinfodb"
 		}
 	},
 	"variables": {
@@ -277,7 +281,12 @@
 							{
 								"referenceName": "MySqlTablesorce_ds",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"database_name": {
+										"value": "@pipeline().globalParameters.database_name",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
@@ -295,6 +304,12 @@
 				"parameters": {
 					"table_name": {
 						"type": "string"
+					},
+					"database_name": {
+						"type": "string"
+					},
+					"output_filename": {
+						"type": "string"
 					}
 				},
 				"annotations": []
@@ -311,7 +326,18 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "MySql_Onpremise",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"database_name": {
+							"value": "@dataset().database_name",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"database_name": {
+						"type": "string"
+					}
 				},
 				"annotations": [],
 				"type": "MySqlTable",
@@ -592,6 +618,11 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"database_name": {
+						"type": "String"
+					}
+				},
 				"annotations": [],
 				"type": "MySql",
 				"typeProperties": {
@@ -702,6 +733,10 @@
 				"schema_name": {
 					"type": "string",
 					"value": "[parameters('default_properties_schema_name_value')]"
+				},
+				"database_name": {
+					"type": "string",
+					"value": "[parameters('default_properties_database_name_value')]"
 				}
 			},
 			"dependsOn": []

@@ -31,6 +31,10 @@
 			"type": "string",
 			"defaultValue": "dbo"
 		},
+		"default_properties_database_name_value": {
+			"type": "string",
+			"defaultValue": "familyinfodb"
+		},
 		"AzureBlobStoragesouce_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'AzureBlobStoragesouce'"
@@ -85,7 +89,7 @@
 		},
 		"MySql_Onpremise_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "familyinfodb"
+			"defaultValue": "@{linkedService().database_name}"
 		},
 		"MySql_Onpremise_properties_typeProperties_username": {
 			"type": "string",
@@ -104,6 +108,10 @@
 				"schema_name": {
 					"type": "string",
 					"value": "[parameters('default_properties_schema_name_value')]"
+				},
+				"database_name": {
+					"type": "string",
+					"value": "[parameters('default_properties_database_name_value')]"
 				}
 			},
 			"dependsOn": []
@@ -456,6 +464,11 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"database_name": {
+						"type": "String"
+					}
+				},
 				"annotations": [],
 				"type": "MySql",
 				"typeProperties": {
@@ -620,7 +633,18 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "MySql_Onpremise",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"database_name": {
+							"value": "@dataset().database_name",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"database_name": {
+						"type": "string"
+					}
 				},
 				"annotations": [],
 				"type": "MySqlTable",

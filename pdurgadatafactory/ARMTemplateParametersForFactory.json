@@ -51,7 +51,7 @@
 			"value": "localhost"
 		},
 		"MySql_Onpremise_properties_typeProperties_database": {
-			"value": "familyinfodb"
+			"value": "@{linkedService().database_name}"
 		},
 		"MySql_Onpremise_properties_typeProperties_username": {
 			"value": "root"
@@ -67,6 +67,9 @@
 		},
 		"default_properties_schema_name_value": {
 			"value": "dbo"
+		},
+		"default_properties_database_name_value": {
+			"value": "familyinfodb"
 		}
 	}
 }
