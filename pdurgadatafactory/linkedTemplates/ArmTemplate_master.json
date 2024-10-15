@@ -7,13 +7,21 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "pdurgadatafactory"
 		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
 		},
-		"new blob target_connectionString": {
+		"AzureSqlDatabase2new_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'new blob target'"
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase2new'"
+		},
+		"Final_target_AzureBlobStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Final_target_AzureBlobStorage'"
 		},
 		"AzureBlobStoragesouce_sasUri": {
 			"type": "secureString",
@@ -35,6 +43,22 @@
 			"type": "string",
 			"defaultValue": "creativity"
 		},
+		"AzureSqlDatabase2new_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "pdurgasqlserver.database.windows.net"
+		},
+		"AzureSqlDatabase2new_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "creativitydb"
+		},
+		"AzureSqlDatabase2new_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Access Token"
+		},
+		"Final_AzureBlobStorage_source_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'Final_AzureBlobStorage_source'"
+		},
 		"blobsource_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'blobsource'"
@@ -42,6 +66,10 @@
 		"new blob_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'new blob'"
+		},
+		"newBlobStorage_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'newBlobStorage'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -70,11 +98,17 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
 					"AzureSqlDatabase1_password": {
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					},
-					"new blob target_connectionString": {
-						"value": "[parameters('new blob target_connectionString')]"
+					"AzureSqlDatabase2new_password": {
+						"value": "[parameters('AzureSqlDatabase2new_password')]"
+					},
+					"Final_target_AzureBlobStorage_connectionString": {
+						"value": "[parameters('Final_target_AzureBlobStorage_connectionString')]"
 					},
 					"AzureBlobStoragesouce_sasUri": {
 						"value": "[parameters('AzureBlobStoragesouce_sasUri')]"
@@ -91,35 +125,30 @@
 					"AzureSqlDatabase1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					},
+					"AzureSqlDatabase2new_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase2new_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase2new_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase2new_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase2new_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase2new_properties_typeProperties_userName')]"
+					},
+					"Final_AzureBlobStorage_source_sasUri": {
+						"value": "[parameters('Final_AzureBlobStorage_source_sasUri')]"
+					},
 					"blobsource_sasUri": {
 						"value": "[parameters('blobsource_sasUri')]"
 					},
 					"new blob_sasUri": {
 						"value": "[parameters('new blob_sasUri')]"
+					},
+					"newBlobStorage_sasUri": {
+						"value": "[parameters('newBlobStorage_sasUri')]"
 					}
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "pdurgadatafactory_ArmTemplate_1",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2024-03-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'pdurgadatafactory_ArmTemplate_0')]"
-			]
 		}
 	]
 }

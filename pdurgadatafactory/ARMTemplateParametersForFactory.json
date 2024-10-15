@@ -5,10 +5,16 @@
 		"factoryName": {
 			"value": "pdurgadatafactory"
 		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
-		"new blob target_connectionString": {
+		"AzureSqlDatabase2new_password": {
+			"value": ""
+		},
+		"Final_target_AzureBlobStorage_connectionString": {
 			"value": ""
 		},
 		"AzureBlobStoragesouce_sasUri": {
@@ -26,10 +32,25 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "creativity"
 		},
+		"AzureSqlDatabase2new_properties_typeProperties_server": {
+			"value": "pdurgasqlserver.database.windows.net"
+		},
+		"AzureSqlDatabase2new_properties_typeProperties_database": {
+			"value": "creativitydb"
+		},
+		"AzureSqlDatabase2new_properties_typeProperties_userName": {
+			"value": "Access Token"
+		},
+		"Final_AzureBlobStorage_source_sasUri": {
+			"value": ""
+		},
 		"blobsource_sasUri": {
 			"value": ""
 		},
 		"new blob_sasUri": {
+			"value": ""
+		},
+		"newBlobStorage_sasUri": {
 			"value": ""
 		}
 	}
