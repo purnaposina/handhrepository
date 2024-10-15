@@ -1,1 +1,6 @@
-{}
+{
+	"schema_name": {
+		"type": "string",
+		"value": "dbo"
+	}
+}

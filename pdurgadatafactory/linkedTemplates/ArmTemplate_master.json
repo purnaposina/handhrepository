@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Final_target_AzureBlobStorage'"
 		},
+		"MySql_Onpremise_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'MySql_Onpremise'"
+		},
 		"AzureBlobStoragesouce_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'AzureBlobStoragesouce'"
@@ -59,6 +63,18 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'Final_AzureBlobStorage_source'"
 		},
+		"MySql_Onpremise_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost"
+		},
+		"MySql_Onpremise_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "familyinfodb"
+		},
+		"MySql_Onpremise_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "root"
+		},
 		"blobsource_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'blobsource'"
@@ -70,6 +86,10 @@
 		"newBlobStorage_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'newBlobStorage'"
+		},
+		"default_properties_schema_name_value": {
+			"type": "string",
+			"defaultValue": "dbo"
 		},
 		"containerUri": {
 			"type": "string",
@@ -110,6 +130,12 @@
 					"Final_target_AzureBlobStorage_connectionString": {
 						"value": "[parameters('Final_target_AzureBlobStorage_connectionString')]"
 					},
+					"MySql_Onpremise_password": {
+						"value": "[parameters('MySql_Onpremise_password')]"
+					},
+					"default_properties_schema_name_value": {
+						"value": "[parameters('default_properties_schema_name_value')]"
+					},
 					"AzureBlobStoragesouce_sasUri": {
 						"value": "[parameters('AzureBlobStoragesouce_sasUri')]"
 					},
@@ -145,10 +171,39 @@
 					},
 					"newBlobStorage_sasUri": {
 						"value": "[parameters('newBlobStorage_sasUri')]"
+					},
+					"MySql_Onpremise_properties_typeProperties_server": {
+						"value": "[parameters('MySql_Onpremise_properties_typeProperties_server')]"
+					},
+					"MySql_Onpremise_properties_typeProperties_database": {
+						"value": "[parameters('MySql_Onpremise_properties_typeProperties_database')]"
+					},
+					"MySql_Onpremise_properties_typeProperties_username": {
+						"value": "[parameters('MySql_Onpremise_properties_typeProperties_username')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "pdurgadatafactory_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'pdurgadatafactory_ArmTemplate_0')]"
+			]
 		}
 	]
 }

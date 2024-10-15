@@ -17,6 +17,9 @@
 		"Final_target_AzureBlobStorage_connectionString": {
 			"value": ""
 		},
+		"MySql_Onpremise_password": {
+			"value": ""
+		},
 		"AzureBlobStoragesouce_sasUri": {
 			"value": ""
 		},
@@ -44,6 +47,15 @@
 		"Final_AzureBlobStorage_source_sasUri": {
 			"value": ""
 		},
+		"MySql_Onpremise_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"MySql_Onpremise_properties_typeProperties_database": {
+			"value": "familyinfodb"
+		},
+		"MySql_Onpremise_properties_typeProperties_username": {
+			"value": "root"
+		},
 		"blobsource_sasUri": {
 			"value": ""
 		},
@@ -52,6 +64,9 @@
 		},
 		"newBlobStorage_sasUri": {
 			"value": ""
+		},
+		"default_properties_schema_name_value": {
+			"value": "dbo"
 		}
 	}
 }

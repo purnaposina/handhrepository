@@ -23,6 +23,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Final_target_AzureBlobStorage'"
 		},
+		"MySql_Onpremise_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'MySql_Onpremise'"
+		},
+		"default_properties_schema_name_value": {
+			"type": "string",
+			"defaultValue": "dbo"
+		},
 		"AzureBlobStoragesouce_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'AzureBlobStoragesouce'"
@@ -70,6 +78,18 @@
 		"newBlobStorage_sasUri": {
 			"type": "secureString",
 			"metadata": "Secure string for 'sasUri' of 'newBlobStorage'"
+		},
+		"MySql_Onpremise_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost"
+		},
+		"MySql_Onpremise_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "familyinfodb"
+		},
+		"MySql_Onpremise_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "root"
 		}
 	},
 	"variables": {
@@ -80,7 +100,12 @@
 			"name": "[concat(parameters('factoryName'), '/default')]",
 			"type": "Microsoft.DataFactory/factories/globalparameters",
 			"apiVersion": "2018-06-01",
-			"properties": {},
+			"properties": {
+				"schema_name": {
+					"type": "string",
+					"value": "[parameters('default_properties_schema_name_value')]"
+				}
+			},
 			"dependsOn": []
 		},
 		{
@@ -269,6 +294,17 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/integrationRuntimeselfhosted')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "practice",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dsAzureSqlTable1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -416,6 +452,35 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/MySql_Onpremise')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "MySql",
+				"typeProperties": {
+					"server": "[parameters('MySql_Onpremise_properties_typeProperties_server')]",
+					"port": 3306,
+					"database": "[parameters('MySql_Onpremise_properties_typeProperties_database')]",
+					"username": "[parameters('MySql_Onpremise_properties_typeProperties_username')]",
+					"sslMode": 1,
+					"useSystemTrustStore": 0,
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('MySql_Onpremise_password')]"
+					},
+					"driverVersion": "v2"
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntimeselfhosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeselfhosted')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/parameter parquet')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -546,6 +611,24 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_source')]",
 				"[concat(variables('factoryId'), '/datasets/ds_target_Parquet1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/MySqlTablesorce_ds')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "MySql_Onpremise",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "MySqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/MySql_Onpremise')]"
 			]
 		}
 	]
