@@ -1,5 +1,13 @@
 {
 	"name": "pdurgadatafactory",
+	"properties": {
+		"globalParameters": {
+			"schema_name": {
+				"type": "string",
+				"value": "dbo"
+			}
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
