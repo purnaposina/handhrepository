@@ -5,6 +5,10 @@
 			"schema_name": {
 				"type": "string",
 				"value": "dbo"
+			},
+			"database_name": {
+				"type": "string",
+				"value": "familyinfodb"
 			}
 		}
 	},
