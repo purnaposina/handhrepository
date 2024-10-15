@@ -103,6 +103,12 @@
 			},
 			"ouput_para": {
 				"type": "string"
+			},
+			"inputfile_name": {
+				"type": "string"
+			},
+			"outputfile_name": {
+				"type": "string"
 			}
 		},
 		"annotations": []
