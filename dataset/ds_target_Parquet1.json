@@ -1,0 +1,19 @@
+{
+	"name": "ds_target_Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "newBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "mycon"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
