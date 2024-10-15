@@ -9,7 +9,7 @@
 			"input": {
 				"type": "string"
 			},
-			"file_name": {
+			"file_name_input": {
 				"type": "string"
 			}
 		},
