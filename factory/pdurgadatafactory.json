@@ -1,0 +1,9 @@
+{
+	"name": "pdurgadatafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "72057d32-d6bb-4987-9fbb-05073c8518f5",
+		"tenantId": "e2c101a4-d3e4-4b9b-91c1-f0ea355bf710"
+	}
+}
