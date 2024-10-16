@@ -28,10 +28,16 @@
 								"type": "Expression"
 							}
 						}
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
