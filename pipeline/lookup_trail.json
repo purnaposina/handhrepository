@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "MySqlSource",
-						"query": "SELECT * FROM familyinfodb.personaldetails ORDER BY name LIMIT 3;\n\n"
+						"query": {
+							"value": "@concat('select* from ',pipeline().globalParameters.database_name,'.',pipeline().parameters.table_name)",
+							"type": "Expression"
+						}
 					},
 					"dataset": {
 						"referenceName": "MySqlTablesorce_ds",
