@@ -1,0 +1,37 @@
+{
+	"name": "lookup_trail",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "SELECT * FROM familyinfodb.personaldetails WHERE name = 'harish';\n"
+					},
+					"dataset": {
+						"referenceName": "MySqlTablesorce_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"database_name": {
+								"value": "@pipeline().globalParameters.database_name",
+								"type": "Expression"
+							}
+						}
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}
