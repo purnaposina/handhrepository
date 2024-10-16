@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "MySqlSource",
-						"query": "SELECT * FROM familyinfodb.personaldetails ORDER BY name LIMIT 5;\n\n"
+						"query": "SELECT * FROM familyinfodb.personaldetails ORDER BY name LIMIT 3;\n\n"
 					},
 					"dataset": {
 						"referenceName": "MySqlTablesorce_ds",
